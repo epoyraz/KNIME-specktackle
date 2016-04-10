@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="hideInWizard" type="xboolean" value="false"/>
+<entry key="generateView" type="xboolean" value="false"/>
+<entry key="maxRows" type="xint" value="2500"/>
+<entry key="jsCode" type="xstring" value="%%00010// Yeah, error handling in German (somewhere on the web)%%00010window.onerror = Fehlerbehandlung;%%00010 %%00010    function Fehlerbehandlung (Nachricht, Datei, Zeile) {%%00010      Fehler = &quot;Fehlermeldung:\n&quot; + Nachricht + &quot;\n&quot; + Datei + &quot;\n&quot; + Zeile;%%00010      zeigeFehler();%%00010      return true;%%00010    }%%00010 %%00010    function zeigeFehler () {%%00010      alert(Fehler);%%00010    }%%00010%%00010%%00010// Setup html page%%00010var body = document.getElementsByTagName('body')[0];%%00010var head = document.getElementsByTagName('head')[0];%%00010var html = &quot;&lt;h1&gt;SpeckTackle Demo&lt;/h1&gt;&quot;;%%00010var data = JSON.parse('$${SJSON}$$');%%00010%%00010$('head').append('&lt;link rel=&quot;stylesheet&quot; href=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/css/index.css&quot; type=&quot;text/css&quot; /&gt;');%%00010$('head').append('&lt;link rel=&quot;stylesheet&quot; href=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/css/st.css&quot; type=&quot;text/css&quot; /&gt;');    %%00010%%00010%%00010// Uses RequireJS to get external libraries%%00010require.config({%%00010%%00009paths: {%%00010%%00009%%00009//&quot;jquery&quot;: &quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;,%%00010%%00009%%00009&quot;jquery.dynatable&quot;: &quot;https://s3.amazonaws.com/dynatable-docs-assets/js/jquery.dynatable&quot;, // from internet%%00010%%00009%%00009//&quot;handlebars&quot;: &quot;https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.runtime.amd.min&quot;,%%00010%%00009%%00009&quot;handlebars&quot;: &quot;https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.amd.min&quot;, // from internet%%00010%%00009%%00009//&quot;sequence-viewer&quot;: &quot;https://raw.githubusercontent.com/calipho-sib/sequence-viewer/master/dist/sequence-viewer.bundle&quot; // currently hardcoded in workflow folder%%00010%%00009%%00009&quot;st&quot;: &quot;/Users/epoyraz/knime-workspace1502/protein_viz5/st&quot;, // currently hardcoded in workflow folder%%00010%%00009%%00009&quot;stdata&quot;: &quot;/Users/epoyraz/knime-workspace1502/protein_viz5/stdata&quot; // currently hardcoded in workflow folder%%00010%%00009},%%00010%%00009shim: {%%00010        'jquery.dynatable'  : ['jquery'],%%00010        'handlebars' :%%00010        {%%00010        %%00009exports : 'Handlebars'%%00010        }%%00010     }%%00010});%%00010//$('head').append('&lt;script src=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/st.js&quot;&gt;&lt;/script&gt;');%%00010//$('head').append('&lt;script src=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/stdata.js&quot;&gt;&lt;/script&gt;');        %%00010//var elem1 = '&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/css/index.css&quot;&gt;';%%00010//var elem2 = '&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/Users/epoyraz/knime-workspace1502/protein_viz5/css/st.css&quot;&gt;';%%00010//head.append(elem1);%%00010// If there is data in the table (TODO find better way of data input)%%00010if (knimeDataTable) {%%00010%%00010html +=    '&lt;div id=&quot;wrap&quot;&gt;';%%00010html +=    '&lt;h2&gt;SpeckTackle: Development&lt;/h2&gt;';%%00010html +=    '        &lt;ul&gt;';%%00010html +=    '            &lt;li&gt;&lt;button&gt;Spectral Match&lt;/button&gt;&lt;/li&gt;';%%00010html +=    '        &lt;/ul&gt;';%%00010html +=    '        &lt;hr&gt;';%%00010html +=    '        &lt;div id=&quot;stgraph&quot; class=&quot;stgraph&quot;&gt;&lt;/div&gt;';%%00010html +=    '        &lt;div id=&quot;stgraphm1&quot; class=&quot;stgraphm&quot;&gt;&lt;/div&gt;';%%00010html +=    '        &lt;div id=&quot;stgraphm2&quot; class=&quot;stgraphm&quot;&gt;&lt;/div&gt;';%%00010html +=    '        &lt;div id=&quot;stgraphm3&quot; class=&quot;stgraphm&quot;&gt;&lt;/div&gt;';%%00010html +=    '    &lt;/div&gt;';%%00010} else {%%00010    html += '&lt;div class=&quot;failure&quot;&gt;No data available.&lt;/div&gt;';%%00010}%%00010%%00010body.innerHTML = html;%%00010%%00010"/>
+<entry key="jsSVGCode" type="xstring" value=""/>
+<entry key="cssCode" type="xstring" value="body {%%00010    font-family: sans-serif;%%00010}%%00010h1 {%%00010    font-size: 1.5em;%%00010    font-weight: bold;%%00010}%%00010.success {%%00010    color: #006633;%%00010    font-weight: bold;%%00010}%%00010%%00010.failure {%%00010    color: #990000;%%00010    font-weight: bold;%%00010}%%00010%%00010.selected {%%00010%%00009background: #C0E5E5;%%00010}%%00010%%00010.container{%%00010    width: 100%;%%00010    overflow: hidden;%%00010}%%00010.mydynatable{%%00010    width: 100%;%%00010    float: left;%%00010    margin: 50px auto;%%00010    /*box-shadow: 0 15px 10px -3px #777;*/%%00010    /*box-shadow:%%00010%%00009%%000090px 10px 0px -4px rgba(0,0,0,0.5);*/%%00010%%00010}%%00010.box-shadow--6dp {%%00010    /*box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2)%%00010*/%%00010%%00009box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, .14);%%00010}%%00010%%00010.protein{%%00010    width: 100%;%%00010    /*%%00010    display: table;%%00010    margin: 0 auto;%%00010    margin-left: 61%;%%00010    align-self: center;*/%%00010}"/>
+<config key="dependencies">
+<entry key="array-size" type="xint" value="2"/>
+<entry key="0" type="xstring" value="D3_3.5.5"/>
+<entry key="1" type="xstring" value="jQuery_1.11.0"/>
+</config>
+<entry key="waitTime" type="xint" value="0"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.js.base.node.viz.generic2.GenericJSViewNodeFactory"/>
+<entry key="node-name" type="xstring" value="Generic JavaScript View"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME JavaScript Base Views"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.js.views"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME.com, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="3.1.1.v201601291159"/>
+<entry key="node-feature-name" type="xstring" value="KNIME JavaScript Views"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.js.views.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME GmbH, Konstanz, Germany"/>
+<entry key="node-feature-version" type="xstring" value="3.1.2.v201603040957"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Generic JavaScript View"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObjectSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObject"/>
+<entry key="port_object_summary" type="xstring" value="Inactive Port Object"/>
+<entry key="port_spec_location" type="xstring" value="spec/spec.zip"/>
+<entry key="port_object_location" type="xstring" value="object/portobject.zip"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="8a9b72aa-21bc-4192-b6b7-a9d21dfbadbf"/>
+</config>
+</config>
